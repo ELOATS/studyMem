@@ -1,19 +1,25 @@
 package handler
 
 import (
+	"github.com/ELOATS/studyMem/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
 )
 
-type Handler struct{}
+type Handler struct {
+	UserService model.UserService
+}
 
 type Config struct {
-	R *gin.Engine
+	R           *gin.Engine
+	UserService model.UserService
 }
 
 func NewHandler(c *Config) {
-	h := &Handler{}
+	h := &Handler{
+		UserService: c.UserService,
+	}
 
 	g := c.R.Group(os.Getenv("ACCOUNT_API_URL"))
 	g.GET("/", h.Me)
@@ -24,14 +30,6 @@ func NewHandler(c *Config) {
 	g.POST("/image", h.Image)
 	g.DELETE("/image", h.DeleteImage)
 	g.PUT("/details", h.Details)
-}
-
-// Me get a user's details
-func (h *Handler) Me(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"errcode": 200,
-		"errmsg":  "me",
-	})
 }
 
 func (h *Handler) Signup(c *gin.Context) {
