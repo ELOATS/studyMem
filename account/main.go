@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/ELOATS/studyMem/handler"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -14,11 +15,9 @@ import (
 func main() {
 	log.Println("Starting server...")
 	router := gin.Default()
-	router.GET("/api/account", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"errcode": 100,
-			"errmsg":  "default",
-		})
+
+	handler.NewHandler(&handler.Config{
+		R: router,
 	})
 
 	srv := &http.Server{
