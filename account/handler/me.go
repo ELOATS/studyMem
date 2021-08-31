@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/ELOATS/studyMem/model"
-	"github.com/ELOATS/studyMem/model/apperrors"
+	"github.com/ELOATS/studyMem/account/model"
+	"github.com/ELOATS/studyMem/account/model/apperrors"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -12,7 +12,6 @@ import (
 func (h *Handler) Me(c *gin.Context) {
 	// A *model.User will eventually be added to context in middleware
 	user, exists := c.Get("user")
-
 	if !exists {
 		log.Printf("Unable to extract user from request context for unknown reason: %v\n", c)
 		err := apperrors.NewInternal()

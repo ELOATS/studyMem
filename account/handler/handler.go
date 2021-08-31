@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/ELOATS/studyMem/model"
+	"github.com/ELOATS/studyMem/account/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
@@ -30,12 +30,6 @@ func NewHandler(c *Config) {
 	g.POST("/image", h.Image)
 	g.DELETE("/image", h.DeleteImage)
 	g.PUT("/details", h.Details)
-}
-
-func (h *Handler) Signup(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"hello": "it's signup",
-	})
 }
 
 func (h *Handler) Signin(c *gin.Context) {

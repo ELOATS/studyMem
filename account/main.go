@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/ELOATS/studyMem/handler"
+	"github.com/ELOATS/studyMem/account/handler"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"

@@ -1,4 +1,4 @@
-module github.com/ELOATS/studyMem
+module github.com/ELOATS/studyMem/account
 
 go 1.17
 

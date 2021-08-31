@@ -3,9 +3,9 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/ELOATS/studyMem/model"
-	"github.com/ELOATS/studyMem/model/apperrors"
-	"github.com/ELOATS/studyMem/model/mocks"
+	"github.com/ELOATS/studyMem/account/model"
+	"github.com/ELOATS/studyMem/account/model/apperrors"
+	"github.com/ELOATS/studyMem/account/model/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
