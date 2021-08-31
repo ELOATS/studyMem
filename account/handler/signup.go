@@ -5,6 +5,7 @@ import (
 	"github.com/ELOATS/studyMem/account/model/apperrors"
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http"
 )
 
 type SignupReq struct {
@@ -30,4 +31,14 @@ func (h *Handler) Signup(c *gin.Context) {
 		c.JSON(apperrors.Status(err), gin.H{"error": err})
 		return
 	}
+
+	tokens, err := h.TokenService.NewPairFromUser(c, u, "")
+	if err != nil {
+		log.Printf("Fail to create tokens for user: %+v\n", err.Error())
+		c.JSON(apperrors.Status(err), gin.H{"error": err})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{
+		"tokens": tokens,
+	})
 }
